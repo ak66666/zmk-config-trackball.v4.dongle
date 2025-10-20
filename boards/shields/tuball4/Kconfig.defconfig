@@ -1,0 +1,18 @@
+if SHIELD_TUBALL4_DONGLE || SHIELD_TUBALL4_LEFT || SHIELD_TUBALL4_RIGHT
+config ZMK_SPLIT 
+    default y
+config ZMK_POINTING
+    default y
+endif
+
+if SHIELD_TUBALL4_DONGLE
+config ZMK_KEYBOARD_NAME
+	default "Trackball v4"
+config ZMK_SPLIT_ROLE_CENTRAL
+	default y
+endif
+
+if SHIELD_TUBALL4_RIGHT
+config SPI
+    default y
+endif

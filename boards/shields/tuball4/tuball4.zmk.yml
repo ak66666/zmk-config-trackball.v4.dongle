@@ -1,0 +1,14 @@
+file_format: "1"
+id: tuball4
+name: tuball4
+type: shield
+url: https://github.com/ak66666/zmk-config-trackball.v4.dongle
+requires: [pro_micro]
+features:
+  - keys
+  - trackball
+  - dongle
+siblings:
+  - tuball_left
+  - tuball_right
+  - tuball_dongle
