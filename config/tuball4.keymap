@@ -119,8 +119,24 @@
 	// It is detected in trackball_listener telling to switch from the pointing movement to scrolling.
 	// Need separate layers for orientation to implement 
  	// Layers 4, 5
-/* 4 */ FRONT_SCROLL  	    {bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>;};
-/* 5 */ BACKWARD_SCROLL     {bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>;};
+/* 4 */ FRONT_SCROLL  	    {bindings = <
+				/* Trackball */ 
+		&mkp MB5 /*forward*/			&trans
+		&trans					&trans
+		&mkp MB4 /*back*/ &trans &trans		&trans
+	                   /* Inner Buttons  */
+			&trans &trans &trans
+                     /* Handiness         Orientation */
+			&trans 			&trans>;};
+/* 5 */ BACKWARD_SCROLL     {bindings = <
+						/* Trackball */ 
+		&trans			&mkp MB5 /*forward*/
+		&trans			&trans
+		&trans   &trans &trans	&mkp MB4 /*back*/
+	                   /* Inner Buttons  */
+			&trans &trans &trans
+                     /* Handiness         Orientation */
+			&trans 			&trans>;};
 
         extra1 {status = "reserved";};
         extra2 {status = "reserved";};
