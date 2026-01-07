@@ -137,7 +137,7 @@
 /* 5 */ BACKWARD_SCROLL_RIGHT     {bindings = <
 						/* Trackball */ 
 		&trans					&mkp MB5 /*forward*/
-		&trans			&		trans
+		&trans					&trans
 		&mkp MB4 /*back*/  &trans   &trans 	&trans	
 	                   /* Inner Buttons  */
 			&trans &trans &trans
