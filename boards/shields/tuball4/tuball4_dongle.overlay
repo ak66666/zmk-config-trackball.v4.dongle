@@ -1,4 +1,4 @@
-// Can't have the kscan0 here, that one's physical
+ // Can't have the kscan0 here, that one's physical
 /* 
     Central side is the only one that is aware of .keymap,
     so put all input processors you want to take effect in input listener here.
@@ -40,9 +40,9 @@
     /* Note that process-next command is not used - for each orientation-specific layer there is a separate handler.
        They are arranged so the highest (by number) layers are processed first, thus avoiding interception from the lowest ones' overrides. */
 
-    /* layer-4 both hands front scroll override */
+    /* layer-4, 6 both hands front scroll override */
     front_scroller: front_scroller{
-        layers           = <4>;
+        layers           = <4 6>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction       
             &zip_xy_scaler 1 15                              // Scales the scroll speed
@@ -51,9 +51,9 @@
     };
 
 
-    /* layer-5 both hands back scroll override */
+    /* layer-5, 7 both hands back scroll override */
     back_scroller: back_scroller{
-        layers           = <5>;
+        layers           = <5 7>;
         input-processors = <
             //&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction       
             &zip_xy_scaler 1 15                              // Scales the scroll speed

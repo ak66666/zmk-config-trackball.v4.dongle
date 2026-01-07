@@ -24,8 +24,10 @@
 #define FRONT_LEFT 1
 #define BACK_RIGHT 2
 #define BACK_LEFT 3
-#define FRONT_SCROLL 4
-#define BACKWARD_SCROLL 5
+#define FRONT_SCROLL_RIGHT 4
+#define BACKWARD_SCROLL_RIGHT 5
+#define FRONT_SCROLL_LEFT 6
+#define BACKWARD_SCROLL_LEFT 7
 
 // Mouse speed increased
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
@@ -53,7 +55,7 @@
 	// Layer 0
         FRONT_RIGHT {
             bindings = <
-		&mo FRONT_SCROLL				&mkp LCLK
+		&mo FRONT_SCROLL_RIGHT				&mkp LCLK
 		&mkp MCLK					&mkp MCLK 				
 		&mkp RCLK	      &kp A    &kp B		&kp ESC
                /* Orientation (Front/Backward)   Handiness L/R     */
@@ -68,10 +70,10 @@
 	// Layer 1
         FRONT_LEFT {
             bindings = <
-		&mkp LCLK 				&mo FRONT_SCROLL
+		&mkp LCLK 				&mo FRONT_SCROLL_LEFT
 		&mkp MCLK				&mkp MCLK 				
 		&kp ESC      &kp C    &kp D		&mkp RCLK
-	                   /* Inner Buttons  */
+ 	                   /* Inner Buttons  */
 		            &trans &trans &trans
                /* Orientation (Front/Backward)   Handiness L/R     */
 			&trans                  &trans
@@ -84,7 +86,7 @@
             bindings = <
 		&kp ESC         			&mkp RCLK		
 		&mkp MCLK  				&mkp MCLK	
-		&mkp LCLK 	&kp G    &kp H		&mo BACKWARD_SCROLL 
+		&mkp LCLK 	&kp G    &kp H		&mo BACKWARD_SCROLL_RIGHT
 	                   /* Inner Buttons  */
 		            &trans &trans &trans
                /* Orientation (Front/Backward)   Handiness L/R     */
@@ -95,9 +97,9 @@
 	// Layer 3
         BACK_LEFT {
             bindings = <
-		&mkp RCLK				&kp ESC
-		&mkp MCLK				&mkp MCLK 				
-		&mo BACKWARD_SCROLL     &kp E    &kp F	&mkp LCLK
+		&mkp RCLK					&kp ESC
+		&mkp MCLK					&mkp MCLK 				
+		&mo BACKWARD_SCROLL_LEFT      &kp E    &kp F	&mkp LCLK
 	                   /* Inner Buttons  */
 		            &trans &trans &trans
                /* Orientation (Front/Backward)   Handiness L/R     */
@@ -115,27 +117,52 @@
 //		/* Orientation (Front/Backward)   Handiness L/R     */
 //                       RC(0,10)        	     RC(0,9)              
 
-	// Scroll layers do nothing by themselves, it is completely transparent.
-	// It is detected in trackball_listener telling to switch from the pointing movement to scrolling.
-	// Need separate layers for orientation to implement 
- 	// Layers 4, 5
-/* 4 */ FRONT_SCROLL  	    {bindings = <
+	// Scroll layers have the front/back navigation gestures assgigned.
+	// For the  scrolling action - those layers are detected in trackball_listener telling to switch from the pointing movement to scrolling.
+ 	// Need separate layers for orientation to implement, accidentally added the back/forward gestures to  them, similarly to v3/v5 trackballs.
+ 	// Layers 4, 5, 6, 7
+
+	// Thumb - Back, Ring F./Pinkie - Forward 
+/* 4 */ FRONT_SCROLL_RIGHT {bindings = <
 				/* Trackball */ 
-		&mkp MB5 /*forward*/			&trans
+		&trans					&mkp MB4 /*back*/ 
 		&trans					&trans
-		&mkp MB4 /*back*/ &trans &trans		&trans
+		&mkp MB5 /*forward*/ &trans &trans	&trans
 	                   /* Inner Buttons  */
 			&trans &trans &trans
                      /* Handiness         Orientation */
 			&trans 			&trans 
 	      >;
 	};
-/* 5 */ BACKWARD_SCROLL     {bindings = <
+/* 5 */ BACKWARD_SCROLL_RIGHT     {bindings = <
 						/* Trackball */ 
-		&trans			&mkp MB5 /*forward*/
-		&trans			&trans
-		&trans   &trans &trans	&mkp MB4 /*back*/
+		&trans					&mkp MB5 /*forward*/
+		&trans			&		trans
+		&mkp MB4 /*back*/  &trans   &trans 	&trans	
 	                   /* Inner Buttons  */
+			&trans &trans &trans
+                     /* Handiness         Orientation */
+			&trans 			&trans
+	      >;
+	};
+
+/* 6 */ FRONT_SCROLL_LEFT {bindings = <
+				/* Trackball */ 
+		&mkp MB4 /*back*/			&trans			
+		&trans					&trans
+		&trans   &trans &trans			&mkp MB5 /*forward*/
+  	                   /* Inner Buttons  */
+			&trans &trans &trans
+                     /* Handiness         Orientation */
+			&trans 			&trans 
+	      >;
+	};
+/* 7 */ BACKWARD_SCROLL_LEFT {bindings = <
+						/* Trackball */ 
+		&mkp MB5 /*forward*/			&trans
+		&trans					&trans
+		&trans 		&trans	 &trans		&mkp MB4 /*back*/ 
+  	                   /* Inner Buttons  */
 			&trans &trans &trans
                      /* Handiness         Orientation */
 			&trans 			&trans
@@ -148,8 +175,6 @@
         extra4 {status = "reserved";};
         extra5 {status = "reserved";};
         extra6 {status = "reserved";};
-        extra7 {status = "reserved";};
-        extra8  {status = "reserved";};
 
      };
 
