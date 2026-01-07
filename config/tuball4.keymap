@@ -127,7 +127,9 @@
 	                   /* Inner Buttons  */
 			&trans &trans &trans
                      /* Handiness         Orientation */
-			&trans 			&trans>;};
+			&trans 			&trans 
+	      >;
+	};
 /* 5 */ BACKWARD_SCROLL     {bindings = <
 						/* Trackball */ 
 		&trans			&mkp MB5 /*forward*/
@@ -136,7 +138,9 @@
 	                   /* Inner Buttons  */
 			&trans &trans &trans
                      /* Handiness         Orientation */
-			&trans 			&trans>;};
+			&trans 			&trans
+	      >;
+	};
 
         extra1 {status = "reserved";};
         extra2 {status = "reserved";};
